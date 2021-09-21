@@ -19,8 +19,8 @@ class App {
 
   constructor(routes: Routes[]) {
     this.app = express();
-    this.port = process.env.PORT || 3000;
-    this.env = process.env.NODE_ENV || 'development';
+    this.port = PORT;
+    this.env = NODE_ENV;
 
     this.initializeMiddlewares();
     this.initializeRoutes(routes);

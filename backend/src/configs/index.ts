@@ -1,7 +1,7 @@
 export const {
   NODE_ENV = 'development',
 
-  PORT = 3000,
+  PORT = 5000,
   HOSTNAME = 'localhost',
   PROTOCOL = 'http',
 
