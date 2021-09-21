@@ -22,13 +22,10 @@
     "baseUrl": "src",
     "paths": {
       "@app": ["app"],
-      "@controllers/*": ["controllers/*"],
-      "@dtos/*": ["dtos/*"],
+      "@modules/*": ["modules/*"],
       "@exceptions/*": ["exceptions/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
-      "@models/*": ["models/*"],
-      "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"]
     }

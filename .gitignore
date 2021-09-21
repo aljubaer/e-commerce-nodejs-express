@@ -119,7 +119,7 @@ dist
 
 src/configs
 
-src/modules
-src/middlewares
-src/http
-src/interfaces
+# src/modules
+# src/middlewares
+# src/http
+# src/interfaces
