@@ -8,7 +8,7 @@ afterAll(async () => {
 });
 
 describe('Testing Auth', () => {
-  describe('[POST] /signup', () => {
+  describe('[POST] /register', () => {
     it('response should have the Create userData', () => {
       const userData: CreateUserDto = {
         email: 'test@email.com',
@@ -17,12 +17,12 @@ describe('Testing Auth', () => {
       const authRoute = new AuthRoute();
       const app = new App([authRoute]);
 
-      return request(app.getServer()).post('/signup').send(userData);
+      return request(app.getServer()).post('/register').send(userData);
     });
   });
 
   describe('[POST] /login', () => {
-    it('response should have the Set-Cookie header with the Authorization token', async () => {
+    it('response should have the Authorization token', async () => {
       const userData: CreateUserDto = {
         email: 'test@email.com',
         password: 'q1w2e3r4',
@@ -34,7 +34,7 @@ describe('Testing Auth', () => {
       return request(app.getServer())
         .post('/login')
         .send(userData)
-        .expect('Set-Cookie', /^Authorization=.+/);
+        .expect(200);
     });
   });
 
