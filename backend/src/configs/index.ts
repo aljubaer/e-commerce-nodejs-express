@@ -17,3 +17,9 @@ export const ONE_MINUTE = 60;
 export const ONE_HOUR = 60 * ONE_MINUTE;
 
 export const SALT_ROUND = 10;
+
+export const ONE_BYTE = 1;
+
+export const ONE_KB = 1024 * ONE_BYTE;
+
+export const ONE_MB = 1024 * ONE_KB;

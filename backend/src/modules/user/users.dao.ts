@@ -1,7 +1,8 @@
+import { Dao } from '@interfaces/dao.interface';
 import { BasicUser } from './users.interface';
 import User from './users.model';
 
-export class UserDao {
+export class UserDao implements Dao {
   private static users: User[] = [
     new User({
       id: 1,
@@ -29,7 +30,7 @@ export class UserDao {
     });
   }
 
-  public create(email, password): BasicUser {
+  public create({email, password}): BasicUser {
     const newUser = new User({ id: this.genId(), email, password });
     UserDao.users.push(newUser);
     return this.findById(newUser._id);

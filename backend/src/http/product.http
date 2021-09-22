@@ -1,0 +1,28 @@
+# products API
+
+###
+# baseURL
+@baseURL = http://localhost:5000/products
+
+###
+# Find All Products
+GET {{baseURL}}/
+
+###
+# Find Product By Id
+GET {{baseURL}}/1
+
+
+# ###
+# # Add Product
+# POST {{baseURL}}/
+# Content-Type: application/json
+
+# {
+#     "email": "example@gmail.com",
+# 	"password": "qwer1234"
+# }
+
+###
+# Del Product By Id
+DELETE {{baseURL}}/1
