@@ -1,14 +1,15 @@
 import {
     Button,
     CssBaseline,
-    Grid,
     Paper,
     TextField,
     Typography,
-    GridSize,
 } from "@mui/material";
 import { useFormik } from "formik";
+import { Redirect } from "react-router";
 import * as yup from "yup";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { loginAsync, selectUser } from "./loginSlice";
 
 const validationSchema = yup.object({
     email: yup
@@ -22,6 +23,10 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(selectUser);
+
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -29,7 +34,7 @@ const Login = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            dispatch(loginAsync(values));
         },
     });
 
@@ -81,6 +86,7 @@ const Login = () => {
                     </Button>
                 </form>
             </Paper>
+            {user.status === 'success' && <Redirect to="/" />}
         </div>
     );
 };
