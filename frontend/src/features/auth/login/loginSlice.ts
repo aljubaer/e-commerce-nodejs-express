@@ -8,7 +8,7 @@ export interface UserInfo {
 }
 
 export interface UserState {
-    value: UserInfo;
+    value: UserInfo | null;
     status: "idle" | "loading" | "success" | "failed";
 }
 
@@ -30,7 +30,13 @@ export const loginAsync = createAsyncThunk(
 export const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            localStorage.removeItem("jwt");
+            state.status = 'idle';
+            state.value = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(loginAsync.pending, (state) => {
