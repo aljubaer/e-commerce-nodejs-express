@@ -6,7 +6,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useFormik } from "formik";
-import { Redirect } from "react-router";
+import { Redirect, useLocation } from "react-router";
 import * as yup from "yup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { loginAsync, logout, selectUser } from "./loginSlice";
@@ -26,7 +26,11 @@ const Login = () => {
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectUser);
 
+    let location = useLocation<{ from: string }>();
+
     const isLoggedIn = () => user.status === "success";
+
+    let { from } = location.state || { from: { pathname: "/" } };
 
     const formik = useFormik({
         initialValues: {
@@ -84,10 +88,10 @@ const Login = () => {
                         type="submit"
                     >
                         Submit
-                    </Button>                
+                    </Button>
                 </form>
             </Paper>
-            {user.status === "success" && <Redirect to="/" />}
+            {user.status === "success" && <Redirect to={from} />}
         </div>
     );
 };

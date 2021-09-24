@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
-import ProductsGrid from "../../components/ResponsiveGrid";
+import ProductsGrid from "../../components/products/ResponsiveGrid";
 import { fetchAllProduct } from "./productApi";
 
 type TParams = { id: string };

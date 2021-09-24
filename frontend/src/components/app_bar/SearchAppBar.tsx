@@ -61,7 +61,9 @@ export default function SearchAppBar() {
             <AppBar position="static">
                 <Toolbar>
                     <AppBrand />
+                    {" "}
                     <LinkButton to="/" title="Products" />
+                    <LinkButton to="/wishlists" title="Wishlist" />
 
                     <Search>
                         <SearchIconWrapper>
