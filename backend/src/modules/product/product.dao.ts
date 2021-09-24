@@ -6,7 +6,7 @@ export class ProductDao implements Dao {
       id: 1,
       name: 'HeadPhone',
       description: 'A black wireless headphone',
-      imageUrl: 'uploads/1632310880465photo-1505740420928-5e560c06d30e.jpg',
+      imageUrl: 'http://localhost:5000/uploads/1632310880465photo-1505740420928-5e560c06d30e.jpg',
     }),
   ];
 
@@ -19,11 +19,11 @@ export class ProductDao implements Dao {
     return product;
   }
 
-  public find(crieteria: object): Product[] {
+  public find(criteria: object): Product[] {
     return ProductDao.products.filter(Product => {
       let matched = true;
-      Object.keys(crieteria).forEach(key => {
-        if (Product[key] !== crieteria[key]) matched = false;
+      Object.keys(criteria).forEach(key => {
+        if (Product[key] !== criteria[key]) matched = false;
       });
       return matched;
     });

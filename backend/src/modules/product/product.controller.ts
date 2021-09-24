@@ -3,6 +3,7 @@ import { logger } from '@utils/logger';
 import { Request, Response, NextFunction } from 'express';
 import { Product } from './product.model';
 import ProductService from './product.service';
+import { PROTOCOL, HOSTNAME, PORT } from '../../configs';
 
 class ProductsController {
   public productService = new ProductService();
@@ -38,7 +39,7 @@ class ProductsController {
 
       const newProduct = await this.productService.createProduct({
         ...productData,
-        imageUrl: req.file.path,
+        imageUrl: `${PROTOCOL}://${HOSTNAME}:${PORT}/${req.file.path}`,
       });
 
       res.status(201).json({ data: newProduct, message: 'created' });

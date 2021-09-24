@@ -18,7 +18,7 @@ const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFun
       const findUser = userDao.findById(userId);
 
       if (findUser) {
-        req.user = findUser;
+        req.body.user = findUser;
         next();
       } else {
         next(new HttpException(401, 'Wrong authentication token'));

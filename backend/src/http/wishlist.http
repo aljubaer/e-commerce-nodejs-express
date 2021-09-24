@@ -1,0 +1,25 @@
+# products API
+
+###
+# baseURL
+@baseURL = http://localhost:5000/wishlist
+
+###
+# Find All wishlist
+GET {{baseURL}}/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMyNDc5MjczLCJleHAiOjE2MzI0ODI4NzN9.kbJDNseXQ90n76n5m3wcMRteplkdj9oSr9jsjvAFwEA
+
+###
+# Find wishlist By Id
+GET {{baseURL}}/1
+
+###
+# Add wishlist By Id
+POST {{baseURL}}/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMyNDc5MjczLCJleHAiOjE2MzI0ODI4NzN9.kbJDNseXQ90n76n5m3wcMRteplkdj9oSr9jsjvAFwEA
+
+{
+    "userId": 1,
+	"productId": 2
+}
