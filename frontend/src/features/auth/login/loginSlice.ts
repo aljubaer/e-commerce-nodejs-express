@@ -4,6 +4,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../../app/store";
 
 export interface UserInfo {
+    name: string | null;
+    phoneNumber: string | null;
     email: string | null;
 }
 
@@ -14,6 +16,8 @@ export interface UserState {
 
 const initialState: UserState = {
     value: {
+        name: null,
+        phoneNumber: null,
         email: null,
     },
     status: "idle",
@@ -33,9 +37,9 @@ export const userSlice = createSlice({
     reducers: {
         logout: (state) => {
             localStorage.removeItem("jwt");
-            state.status = 'idle';
+            state.status = "idle";
             state.value = null;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -45,11 +49,13 @@ export const userSlice = createSlice({
             .addCase(loginAsync.fulfilled, (state, action) => {
                 state.status = "success";
                 localStorage.setItem("jwt", action.payload.jwt.token);
-                const { email } = action.payload.user;
-                state.value = { email };
+                const { name, phoneNumber, email } = action.payload.user;
+                state.value = { name, phoneNumber, email };
             });
     },
 });
+
+export const { logout } = userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
 

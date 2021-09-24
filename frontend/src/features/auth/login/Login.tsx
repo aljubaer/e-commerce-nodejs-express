@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { Redirect } from "react-router";
 import * as yup from "yup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { loginAsync, selectUser } from "./loginSlice";
+import { loginAsync, logout, selectUser } from "./loginSlice";
 
 const validationSchema = yup.object({
     email: yup
@@ -23,9 +23,10 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
-
     const dispatch = useAppDispatch();
     const user = useAppSelector(selectUser);
+
+    const isLoggedIn = () => user.status === "success";
 
     const formik = useFormik({
         initialValues: {
@@ -83,10 +84,10 @@ const Login = () => {
                         type="submit"
                     >
                         Submit
-                    </Button>
+                    </Button>                
                 </form>
             </Paper>
-            {user.status === 'success' && <Redirect to="/" />}
+            {user.status === "success" && <Redirect to="/" />}
         </div>
     );
 };

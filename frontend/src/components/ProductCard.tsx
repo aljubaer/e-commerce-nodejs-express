@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import { Button } from "@mui/material";
 
 const ProductCard = ({product}: any) => {
     return (
@@ -25,12 +26,7 @@ const ProductCard = ({product}: any) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
+                <Button color="inherit">Add To Wishlist</Button>
             </CardActions>
         </Card>
     );
