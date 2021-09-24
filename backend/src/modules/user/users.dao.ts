@@ -6,6 +6,8 @@ export class UserDao implements Dao {
   private static users: User[] = [
     new User({
       id: 1,
+      name: 'Lim Jo',
+      phoneNumber: '+12345667534',
       email: 'lim@gmail.com',
       password: '$2b$10$hmrwtGwC.QlfWt6YWaT3S.FP9CarS3.V9n3Qr.d9y2ovcan0oxs56',
     }),
@@ -30,8 +32,8 @@ export class UserDao implements Dao {
     });
   }
 
-  public create({email, password}): BasicUser {
-    const newUser = new User({ id: this.genId(), email, password });
+  public create({name, phoneNumber, email, password}): BasicUser {
+    const newUser = new User({ id: this.genId(), name, phoneNumber, email, password });
     UserDao.users.push(newUser);
     return this.findById(newUser._id);
   }

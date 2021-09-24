@@ -27,8 +27,10 @@ class UserService {
     const foundUser: User = this.userDao.find({ email: userData.email })[0];
     if (foundUser) throw new HttpException(409, `Your email ${userData.email} already exists`);
 
+    const { name, phoneNumber, email } = userData;
+
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    const newUser: BasicUser = this.userDao.create({ email: userData.email, password: hashedPassword });
+    const newUser: BasicUser = this.userDao.create({ name, phoneNumber, email, password: hashedPassword });
 
     return newUser;
   }

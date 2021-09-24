@@ -3,7 +3,7 @@ import { matchPassword } from '@services/encryption.service';
 import { UserDao } from '@modules/user/users.dao';
 import UserService from '@modules/user/users.service';
 import { TokenProvider } from '@services/token.provider';
-import { CreateUserDto } from '@modules/user/users.dto';
+import { CreateUserDto, LoginUserDto } from '@modules/user/users.dto';
 import HttpException from '@exceptions/HttpException';
 import User from '@modules/user/users.model';
 import { isEmpty } from '@utils/util';
@@ -18,13 +18,13 @@ class AuthService {
     return this.userService.createUser(userToRegister);
   }
 
-  public async login(userData: CreateUserDto): Promise<{ token: Token; user: BasicUser }> {
+  public async login(userData: LoginUserDto): Promise<{ token: Token; user: BasicUser }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User = this.userDao.find({ email: userData.email })[0];
     if (!findUser) throw new HttpException(409, `You're email ${userData.email} not found`);
     const isPasswordMatching: boolean = await findUser.matchPassword(userData.password, matchPassword);
-    if (!isPasswordMatching) throw new HttpException(409, "You're password not matching");
+    if (!isPasswordMatching) throw new HttpException(409, "You're password not matched");
 
     const token = this.tokenProvider.createToken(findUser);
 

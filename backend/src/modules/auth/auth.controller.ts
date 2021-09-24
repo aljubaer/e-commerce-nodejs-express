@@ -1,3 +1,4 @@
+import { LoginUserDto } from './../user/users.dto';
 import { BasicUser } from './../user/users.interface';
 import { NextFunction, Request, Response } from 'express';
 import { CreateUserDto } from '@modules/user/users.dto';
@@ -19,7 +20,8 @@ class AuthController {
 
   public logIn = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const userData: CreateUserDto = req.body;
+      const userData: LoginUserDto = req.body;
+      console.log("Test ---> ", userData);
       const { token, user } = await this.authService.login(userData);
 
       res.status(200).json({ jwt: token, user, message: 'login' });

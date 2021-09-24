@@ -2,10 +2,14 @@ import { MatchFunction } from 'types';
 
 export default class User {
   private id: number;
+  private name: string;
+  private phoneNumber: string;
   private email: string;
   private password: string;
-  constructor({ id, email, password }) {
+  constructor({ id, name, phoneNumber, email, password }) {
     this.id = id;
+    this.name = name;
+    this.phoneNumber = phoneNumber;
     this.email = email;
     this.password = password;
   }
@@ -19,7 +23,7 @@ export default class User {
   }
 
   get _data() {
-    return { id: this.id, email: this.email };
+    return { id: this.id, name: this.name, phoneNumber: this.phoneNumber, email: this.email };
   }
 
   public async matchPassword(passwordToMatch, matchfunction: MatchFunction): Promise<boolean> {

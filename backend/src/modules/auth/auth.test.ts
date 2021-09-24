@@ -1,3 +1,4 @@
+import { LoginUserDto } from './../user/users.dto';
 import request from 'supertest';
 import App from '@app';
 import { CreateUserDto } from '@modules/user/users.dto';
@@ -11,6 +12,8 @@ describe('Testing Auth', () => {
   describe('[POST] /register', () => {
     it('response should have the Create userData', () => {
       const userData: CreateUserDto = {
+        name: 'Test Test',
+        phoneNumber: '+1234567890',
         email: 'test@email.com',
         password: 'q1w2e3r4',
       };
@@ -23,7 +26,7 @@ describe('Testing Auth', () => {
 
   describe('[POST] /login', () => {
     it('response should have the Authorization token', async () => {
-      const userData: CreateUserDto = {
+      const userData: LoginUserDto = {
         email: 'test@email.com',
         password: 'q1w2e3r4',
       };
