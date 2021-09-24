@@ -1,6 +1,4 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Counter } from "./features/counter/Counter";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import ProductList from "./features/product/Product";
 import SearchAppBar from "./components/app_bar/SearchAppBar";

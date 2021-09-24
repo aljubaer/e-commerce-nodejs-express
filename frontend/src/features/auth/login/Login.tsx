@@ -9,7 +9,7 @@ import { useFormik } from "formik";
 import { Redirect, useLocation } from "react-router";
 import * as yup from "yup";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { loginAsync, logout, selectUser } from "./loginSlice";
+import { loginAsync, selectUser } from "./loginSlice";
 
 const validationSchema = yup.object({
     email: yup
@@ -27,8 +27,6 @@ const Login = () => {
     const user = useAppSelector(selectUser);
 
     let location = useLocation<{ from: string }>();
-
-    const isLoggedIn = () => user.status === "success";
 
     let { from } = location.state || { from: { pathname: "/" } };
 

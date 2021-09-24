@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { register } from "./registerApi";

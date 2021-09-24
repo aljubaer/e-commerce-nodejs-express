@@ -17,9 +17,6 @@ const ProductList = ({ match }: RouteComponentProps<TParams>) => {
 
     return (
         <>
-            <h1>
-                This is a page for product with ID: {match.params.id ?? ""}{" "}
-            </h1>
             <ProductsGrid products={products} />
         </>
     );
