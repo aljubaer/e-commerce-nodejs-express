@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const ResponsiveGrid = () => {
+const ProductsGrid = ({ products }: any) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid
@@ -20,9 +20,9 @@ const ResponsiveGrid = () => {
                 spacing={{ xs: 2, md: 3 }}
                 columns={{ xs: 12, sm: 12, md: 12 }}
             >
-                {Array.from(Array(6)).map((_, index) => (
+                {products.map((product: any, index: number) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
-                        <ProductCard />
+                        <ProductCard product={product} />
                     </Grid>
                 ))}
             </Grid>
@@ -30,4 +30,4 @@ const ResponsiveGrid = () => {
     );
 };
 
-export default ResponsiveGrid;
+export default ProductsGrid;
