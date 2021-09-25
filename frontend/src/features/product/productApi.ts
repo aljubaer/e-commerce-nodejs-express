@@ -1,5 +1,6 @@
 import { PRODUCT_URL } from '../../constants/index';
+import { httpRequest } from '../../request/httpRequest';
 
 export const fetchAllProduct = async () => {
-    return (await (await fetch(PRODUCT_URL)).json()).data;
+    return httpRequest(PRODUCT_URL);
 }

@@ -10,7 +10,7 @@ const ProductList = ({ match }: RouteComponentProps<TParams>) => {
 
     useEffect(() => {
         (async () => {
-            const _products = await fetchAllProduct();
+            const {  data: _products } = await fetchAllProduct();
             setProducts(_products);
         })();
     }, []);
