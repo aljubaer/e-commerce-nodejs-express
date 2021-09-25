@@ -11,6 +11,11 @@ To setup and run you need to download or clone the project. Then, you can run th
     - Go to `frontend` folder and run `npm install && npm start` to run frontend.
 After completing the setup browse `http://localhost:3000` for frontend and `http://localhost:5000` for backend.
 
+## Login
+You can register new User or use:
+ - email: `lim@gmail.com`
+ - password: `q1w2e3r4`
+
 ## Tech Stack
   - `typescript@4`
   - `react@17`
