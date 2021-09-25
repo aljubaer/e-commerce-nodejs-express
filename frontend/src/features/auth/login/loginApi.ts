@@ -1,13 +1,14 @@
 import { LoginPayload } from "./loginInterface";
 import { LOGIN_URI } from "../../../constants/index";
+import { httpRequest } from "../../../request/httpRequest";
 
 export const login = async (payload: LoginPayload) => {
-    const { jwt, user } = await (await fetch(LOGIN_URI, {
+    const { status, data } = await httpRequest(LOGIN_URI, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-    })).json();
-    return { jwt, user };
+    });
+    return { status, data };
 };

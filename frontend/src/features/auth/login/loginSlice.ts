@@ -47,10 +47,14 @@ export const userSlice = createSlice({
                 state.status = "loading";
             })
             .addCase(loginAsync.fulfilled, (state, action) => {
-                state.status = "success";
-                localStorage.setItem("jwt", action.payload.jwt.token);
-                const { name, phoneNumber, email } = action.payload.user;
-                state.value = { name, phoneNumber, email };
+                if (action.payload.status === 200) {
+                    state.status = "success";
+                    localStorage.setItem("jwt", action.payload.data.jwt.token);
+                    const { name, phoneNumber, email } = action.payload.data.user;
+                    state.value = { name, phoneNumber, email };
+                } else {
+                    alert('Wrong user credential!!');
+                }
             });
     },
 });
