@@ -13,7 +13,7 @@ function App() {
         <div className="App">
             <Router>
                 <SearchAppBar />
-                <Container maxWidth="lg">
+                <Container maxWidth="lg" sx={{ my: 4 }}>
                     <div>
                         <Switch>
                             <Route path="/" exact component={ProductList} />
