@@ -2,11 +2,11 @@ import { Dao } from '@interfaces/dao.interface';
 import { WishList } from './wishlist.model';
 export class WishListDao implements Dao {
   private static wishLists = [
-      new WishList({
-          id: 1,
-          userId: 1,
-          productId: 1
-      }),
+    new WishList({
+      id: 1,
+      userId: 1,
+      productId: 1,
+    }),
   ];
 
   public findAll(): WishList[] {
@@ -32,6 +32,10 @@ export class WishListDao implements Dao {
     const newWishList = new WishList({ id: this.genId(), userId, productId });
     WishListDao.wishLists.push(newWishList);
     return this.findById(newWishList.id);
+  }
+
+  public delete(id: number) {
+    WishListDao.wishLists = WishListDao.wishLists.filter(wish => wish.id !== id);
   }
 
   private genId() {

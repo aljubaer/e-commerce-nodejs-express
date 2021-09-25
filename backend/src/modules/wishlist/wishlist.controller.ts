@@ -2,6 +2,8 @@ import { WishList } from './wishlist.model';
 import { Request, Response, NextFunction } from 'express';
 import WishListService from './wishlist.service';
 import ProductService from '@modules/product/product.service';
+import { StatusCodes } from 'http-status-codes';
+
 
 export default class WishListController {
   public wishListService = new WishListService();
@@ -11,7 +13,7 @@ export default class WishListController {
     try {
       const findAllWishListsData: WishList[] = await this.wishListService.findAllWishList();
 
-      res.status(200).json({ data: findAllWishListsData, message: 'findAll' });
+      res.status(StatusCodes.OK).json({ data: findAllWishListsData, message: 'findAll' });
     } catch (error) {
       next(error);
     }
@@ -35,7 +37,7 @@ export default class WishListController {
       });
 
       Promise.all(wishlistJoinProducts).then(results => {
-        res.status(200).json({ data: results, message: 'findMany' });
+        res.status(StatusCodes.OK).json({ data: results, message: 'findMany' });
       })
 
     } catch (error) {
@@ -49,10 +51,10 @@ export default class WishListController {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const WishListId = Number(req.params.id);
-      const findOneWishListData: WishList = await this.wishListService.findWishListById(WishListId);
+      const wishListId = Number(req.params.id);
+      const findOneWishListData: WishList = await this.wishListService.findWishListById(wishListId);
 
-      res.status(200).json({ data: findOneWishListData, message: 'findOne' });
+      res.status(StatusCodes.OK).json({ data: findOneWishListData, message: 'findOne' });
     } catch (error) {
       next(error);
     }
@@ -64,11 +66,28 @@ export default class WishListController {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const wishListData = req.body;
+      const productId = req.body.productId;
+      const { user } = req.body;
 
-      const newWishList = await this.wishListService.createWishList(wishListData);
+      const newWishList = await this.wishListService.createWishList({productId, userId: user.id});
 
-      res.status(201).json({ data: newWishList, message: 'created' });
+      res.status(StatusCodes.CREATED).json({ data: newWishList, message: 'created' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public deleteWishList = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const wishId = +req.params.id;
+
+      await this.wishListService.deleteWishList(wishId);
+
+      res.status(StatusCodes.ACCEPTED).json({ message: 'deleted' });
     } catch (error) {
       next(error);
     }

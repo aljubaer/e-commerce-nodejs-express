@@ -1,4 +1,3 @@
-import upload from './../../services/upload.service';
 import { Router } from 'express';
 import Route from '@interfaces/routes.interface';
 import WishListController from './wishlist.controller';
@@ -17,6 +16,7 @@ class WishlistRoute implements Route {
     this.router.get(`${this.path}`, authMiddleware, this.wishListController.getWishListsByUserId);
     this.router.get(`${this.path}/:id`, authMiddleware, this.wishListController.getWishListById);
     this.router.post(`${this.path}`, authMiddleware, this.wishListController.createWishList);
+    this.router.delete(`${this.path}/:id`, authMiddleware, this.wishListController.deleteWishList);
   }
 }
 

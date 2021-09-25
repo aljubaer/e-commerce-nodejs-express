@@ -34,6 +34,10 @@ class WishListService {
 
     return newWishList;
   }
+
+  public async deleteWishList(wishId) {
+    this.wishListDao.delete(wishId);
+  }
 }
 
 export default WishListService;
