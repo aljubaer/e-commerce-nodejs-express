@@ -9,6 +9,7 @@ To setup and run you need to download or clone the project. Then, you can run th
  - ### Manual Setup
     - Go to `backend` folder run `npm install` then `npm run dev` to run in development mode or `npm start` to run production.
     - Go to `frontend` folder and run `npm install && npm start` to run frontend.
+
 After completing the setup browse `http://localhost:3000` for frontend and `http://localhost:5000` for backend.
 
 ## Login
