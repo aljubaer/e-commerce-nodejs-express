@@ -26,7 +26,7 @@ class WishListService {
   public async createWishList(wishListData): Promise<WishList> {
     if (isEmpty(wishListData)) throw new HttpException(400, "You're not WishListData");
 
-    const foundWishList: WishList = this.wishListDao.find({ productId: wishListData.productId })[0];
+    const foundWishList: WishList = this.wishListDao.find( wishListData )[0];
     if (foundWishList)
       throw new HttpException(409, `Product with ID: ${wishListData.productId} already exists`);
 
