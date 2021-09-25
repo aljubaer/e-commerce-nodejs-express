@@ -11,17 +11,30 @@ services:
     restart: 'unless-stopped'
     networks:
       - backend
+  client:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/client
+      - /client/node_modules
+    restart: 'unless-stopped'
+    networks:
+      - backend
   server:
     build:
-      context: ./
+      context: ./backend
       target: development-build-stage
       dockerfile: Dockerfile
     container_name: server
     ports:
-      - '3000:3000'
+      - '5000:5000'
     volumes:
-      - ./:/app
-      - /app/node_modules
+      - ./:/server
+      - /server/node_modules
     restart: 'unless-stopped'
     networks:
       - backend
