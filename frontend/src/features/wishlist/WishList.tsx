@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import ProductsGrid from "../../components/products/ResponsiveGrid";
-import { fetchAllWishLists } from "./wishlistApi";
 import { loadAsync, selectWish } from "./wishlistSlice";
 
 const WishList = () => {

@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Alert, Button, Snackbar } from "@mui/material";
-import { addToWish, removeFromWish } from "../../features/wishlist/wishlistApi";
+import { addToWish } from "../../features/wishlist/wishlistApi";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { selectUser } from "../../features/auth/login/loginSlice";

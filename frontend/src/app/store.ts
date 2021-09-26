@@ -1,6 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import counterReducer from '../features/counter/counterSlice';
 import userReducer from '../features/auth/login/loginSlice';
 import wishReducer from '../features/wishlist/wishlistSlice';
 
@@ -15,10 +14,8 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { PersistGate } from 'redux-persist/integration/react'
 
 const rootReducer = combineReducers ({
-  counter: counterReducer,
   user: userReducer,
   wish: wishReducer
 })
